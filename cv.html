@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gimhana Mithuranga - Full Stack Software Engineer CV</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Styling to support layout structures and interactive avatar */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px auto;
+      max-width: 800px;
+      padding: 0 15px;
+      line-height: 1.4;
+      color: #333;
+    }
+
+    /* Container for layout */
+    .header-container {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header-right {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .cv-title {
+      margin-top: 0 !important;
+    }
+
+    /* Toggleable Avatar styling */
+    .avatar-container {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .avatar-container:hover {
+      transform: scale(1.05);
+    }
+
+    .avatar-container.hidden-avatar img {
+      opacity: 0.15;
+      filter: grayscale(100%);
+    }
+
+    .avatar-container::after {
+      content: "Click to toggle";
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 8px;
+      color: #888;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .avatar-container:hover::after {
+      opacity: 1;
+    }
+
+    .job-block {
+      margin-bottom: 15px;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .job-title {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    /* Section headers styling */
+    h2 {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 4px;
+      text-transform: uppercase;
+      font-size: 16px;
+      color: #222;
+      letter-spacing: 0.5px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Print-specific improvements */
+    @media print {
+      body {
+        margin: 10px;
+        max-width: 100%;
+        padding: 0;
+        font-size: 12px;
+      }
+      .avatar-container::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section with Left Avatar and Right Info -->
+  <div class="header-container">
+    <div class="header-left">
+      <div class="avatar-container" id="avatarContainer" title="Click to toggle avatar visibility">
+        <img src="profile.jpg" alt="Gimhana Mithuranga" id="avatarImage">
+      </div>
+    </div>
+    <div class="header-right">
+      <h1>GIMHANA MITHURANGA</h1>
+      <h2 class="cv-title">Full Stack Software Engineer</h2>
+      <div class="cv-contact">
+        +94 70 504 5099 | mg4.aca@gmail.com | <a href="https://www.linkedin.com/in/mithuranga/" target="_blank">linkedin.com/in/mithuranga</a>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Professional Summary -->
+  <h2>Professional Summary</h2>
+  <p>
+    Detail-oriented Full Stack Software Engineer with 4 years of experience delivering high-performing web applications and scalable event-driven solutions. Competent across both frontend and backend development with deep expertise in Vue.js, Node.js ecosystems, and cloud integrations. Proven ability to operate autonomously in fast-paced agency environments, managing complex client feature requests and engineering reliable software systems optimized for performance and security.
+  </p>
+
+  <hr>
+
+  <!-- Technical Skills -->
+  <h2>Technical Skills</h2>
+  <ul>
+    <li><strong>Languages:</strong> JavaScript, Java, PHP, HTML, CSS</li>
+    <li><strong>Frameworks:</strong> Vue.js (Composition & Options API), Node.js (Express, Koa.js), React.js, Laravel, Spring Boot, Spring WebFlux</li>
+    <li><strong>Databases & Caching:</strong> MySQL, SQL Server, MongoDB, Redis</li>
+    <li><strong>Cloud & DevOps:</strong> AWS (Lambda, EC2, Amplify, S3, API Gateway), Git version control</li>
+    <li><strong>Architecture & Patterns:</strong> Clean Architecture, CQRS, Event-Driven Design, RESTful APIs, JWT Authentication</li>
+  </ul>
+
+  <hr>
+
+  <!-- Professional Experience -->
+  <h2>Professional Experience</h2>
+
+  <div class="job-block">
+    <div class="job-header">
+      <span>Recurved Digital Solutions</span>
+      <span>Colombo, Sri Lanka (Jul 2024 – Apr 2026)</span>
+    </div>
+    <div class="job-title">Full Stack Developer</div>
+    <ul>
+      <li>Developed and maintained high-scale web applications and workflow automation tools for a variety of regional and international client brands within a rapid-delivery agency ecosystem.</li>
+      <li><strong>Workflow Automation Engine:</strong> Engineered an event-driven serverless workflow automation engine using Node.js (Express), React.js, and SQL Server to automate multi-step operational processes for client teams.</li>
+      <li><strong>Architecture Implementation:</strong> Designed the application backend following Clean Architecture and CQRS patterns, utilizing extensible custom plugins for event triggers and actions.</li>
+      <li><strong>Cloud Infrastructure Optimization:</strong> Deployed automated workflows leveraging AWS Lambda and RDS, guaranteeing horizontal execution scaling and secure client data isolation.</li>
+      <li><strong>API Gateway & Routing:</strong> Built a lightweight internal API Gateway with Node.js and Express to manage cross-cutting technical infrastructure concerns seamlessly across applications.</li>
+      <li><strong>Security & Middleware Patterns:</strong> Implemented custom middleware layers handling JWT authentication, Redis caching, and IP-based rate limiting to insulate downstream systems and log transactional analytics to MongoDB Atlas.</li>
+      <li><strong>Client Interface Delivery:</strong> Constructed interactive React configuration dashboards incorporating data visualizations and charts for tracking real-time client systems metrics.</li>
+    </ul>
+  </div>
+
+  <div class="job-block">
+    <div class="job-header">
+      <span>Velou Inc.</span>
+      <span>Remote (Nov 2022 – Jul 2024)</span>
+    </div>
+    <div class="job-title">Software Engineer / Associate Software Engineer</div>
+    <ul>
+      <li><strong>Internal Data Tools:</strong> Built dynamic, fully responsive user interfaces using Vue.js (Composition API) and Pinia to enable complex technical product attribute validation.</li>
+      <li><strong>Backend API Integration:</strong> Integrated responsive frontends with a Koa.js backend infrastructure to handle high-throughput interactions with large, complex datasets.</li>
+    </ul>
+  </div>
+
+  <div class="job-block">
+    <div class="job-header">
+      <span>MI Synergy (Pvt) Ltd</span>
+      <span>Colombo, Sri Lanka (Dec 2021 – Nov 2022)</span>
+    </div>
+    <div class="job-title">Associate Software Engineer / Intern Software Engineer</div>
+    <ul>
+      <li><strong>Backend Engineering:</strong> Wrote resilient, testable server-side application logic and engineered high-performance RESTful APIs using Spring Boot and Spring WebFlux architectures.</li>
+      <li><strong>Database Management:</strong> Formulated and optimized schema designs, querying routines, and indexing strategies inside production MySQL instances.</li>
+      <li><strong>Team Collaboration:</strong> Used Git regularly to maintain streamlined branching models, clean version control operations, and collaborate during agile sprint cycles.</li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <!-- Education -->
+  <h2>Education</h2>
+  <ul>
+    <li><strong>B.Sc. (Hons) in Software Engineering</strong> | Cardiff Metropolitan University (Completed 2023)</li>
+    <li><strong>Graduate Diploma in Software Engineering</strong> | Institute of Software Engineering (Completed 2022)</li>
+  </ul>
+
+  <hr>
+
+  <!-- Professional References -->
+  <h2>Professional References</h2>
+  <ul>
+    <li><strong>Devapriya Sampath</strong> | CEO, Queue Connect | +94 71 248 7853 | <a href="mailto:desampath@gmail.com">desampath@gmail.com</a></li>
+    <li><strong>Madujith Chinthaka</strong> | Senior Software Engineer | +94 71 994 8941 | <a href="mailto:madujithc@gmail.com">madujithc@gmail.com</a></li>
+  </ul>
+
+  <script>
+    // Script to handle interactive/toggleable avatar behavior
+    const avatarContainer = document.getElementById('avatarContainer');
+    avatarContainer.addEventListener('click', () => {
+      avatarContainer.classList.toggle('hidden-avatar');
+    });
+  </script>
+</body>
+</html>
