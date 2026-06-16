@@ -43,30 +43,30 @@ img {
   border-radius: 50%;
   object-fit: cover;
   float: left;
-  margin: 0 25px 10px 0; /* Space to the right and bottom */
+  margin: 0 25px 0px 0; /* Space to the right and bottom */
 }
 
 /* Clear float on horizontal rules */
 hr {
   clear: both;
-  margin-top: 10px !important;
-  margin-bottom: 12px !important;
+  margin-top: 6px !important;
+  margin-bottom: 8px !important;
 }
 
 /* Section headings margins and spacing */
 h2 {
-  margin-top: 12px !important;
-  margin-bottom: 6px !important;
+  margin-top: 8px !important;
+  margin-bottom: 4px !important;
 }
 
 /* Compact paragraphs and lists spacing */
 p, ul {
   margin-top: 0 !important;
-  margin-bottom: 4px !important;
+  margin-bottom: 2px !important;
 }
 
 li {
-  margin-bottom: 2px !important;
+  margin-bottom: 1px !important;
 }
 
 /* Prevent print stylesheet from appending URLs next to links */
