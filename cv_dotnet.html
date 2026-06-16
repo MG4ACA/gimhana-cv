@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gimhana Mithuranga - Full Stack Software Engineer (React & .NET Core)</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Styling to support layout structures and interactive avatar */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px auto;
+        max-width: 800px;
+        padding: 0 15px;
+        line-height: 1.4;
+        color: #333;
+      }
+
+      /* Container for layout */
+      .header-container {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      p,
+      li {
+        text-align: justify !important;
+      }
+      .header-right {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .cv-title {
+        margin-top: 0 !important;
+      }
+
+      /* Toggleable Avatar styling */
+      .avatar-container {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .avatar-container:hover {
+        transform: scale(1.05);
+      }
+
+      .avatar-container.hidden-avatar img {
+        opacity: 0.15;
+        filter: grayscale(100%);
+      }
+
+      .avatar-container::after {
+        content: 'Click to toggle';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 8px;
+        color: #888;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .avatar-container:hover::after {
+        opacity: 1;
+      }
+
+      .job-block {
+        margin-bottom: 15px;
+      }
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+
+      .job-title {
+        font-style: italic;
+        color: #555;
+        margin-bottom: 6px;
+      }
+
+      /* Section headers styling */
+      h2 {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 4px;
+        text-transform: uppercase;
+        font-size: 16px;
+        color: #222;
+        letter-spacing: 0.5px;
+      }
+
+      ul {
+        padding-left: 20px;
+      }
+
+      a {
+        color: #0066cc;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Print-specific improvements */
+      @media print {
+        body {
+          margin: 10px;
+          max-width: 100%;
+          padding: 0;
+          font-size: 12px;
+        }
+        .avatar-container::after {
+          display: none;
+        }
+        .mi-synergy-header {
+          /* page-break-before: always; */
+        }
+        .velou-header {
+          page-break-before: always;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section with Left Avatar and Right Info -->
+    <div class="header-container">
+      <div class="header-left">
+        <div
+          class="avatar-container"
+          id="avatarContainer"
+          title="Click to toggle avatar visibility"
+        >
+          <img src="profile.jpg" alt="Gimhana Mithuranga" id="avatarImage" />
+        </div>
+      </div>
+      <div class="header-right">
+        <h1>GIMHANA MITHURANGA</h1>
+        <h2 class="cv-title">Full Stack Software Engineer</h2>
+        <div class="cv-contact">
+          +94 70 504 5099 |
+          <a href="mailto:mg4.aca@gmail.com">mg4.aca@gmail.com</a>
+          |
+          <a href="https://www.linkedin.com/in/mithuranga/" target="_blank">
+            linkedin.com/in/mithuranga
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- Professional Summary -->
+    <h2>Professional Summary</h2>
+    <p>
+      Full Stack Software Engineer with 4 years of experience building and shipping high-performing web
+      applications across frontend and backend stacks. Strong hands-on background in React.js and Node.js
+      ecosystems, with proven ability to collaborate closely with client engineering teams in agile
+      environments and deliver reliable, production-ready software on time. Experienced in RESTful API
+      design, cloud deployments on AWS, and application security practices. Currently expanding into
+      the .NET ecosystem — actively completing the Microsoft ASP.NET Core Professional Certificate
+      (Coursera) to broaden backend capabilities alongside existing strengths.
+    </p>
+
+    <hr />
+
+    <!-- Technical Skills -->
+    <h2>Technical Skills</h2>
+    <ul>
+      <li>
+        <strong>Languages:</strong>
+        JavaScript, C#, TypeScript, Java, PHP, HTML, CSS
+      </li>
+      <li>
+        <strong>Frameworks &amp; Platforms:</strong>
+        ASP.NET Core, React.js / Next.js, Vue.js (Composition &amp; Options API), Node.js (Express, Koa.js), Laravel, Spring Boot
+      </li>
+      <li>
+        <strong>Databases &amp; Caching:</strong>
+        MS SQL Server, MySQL, PostgreSQL, MongoDB, Redis
+      </li>
+      <li>
+        <strong>Cloud, DevOps &amp; CI/CD:</strong>
+        AWS (EC2, Lambda, S3, API Gateway, Route53), Git, GitHub Actions, CI/CD pipelines
+      </li>
+      <li>
+        <strong>Architecture &amp; Patterns:</strong>
+        REST API design, Clean Architecture, CQRS, Event-Driven Design, State Machine patterns, JWT Authentication
+      </li>
+      <li>
+        <strong>Testing &amp; Quality:</strong>
+        Unit testing (NUnit, JUnit), integration testing, code reviews, Agile/Scrum
+      </li>
+      <li>
+        <strong>Tools:</strong>
+        Visual Studio, VS Code, Jira, Confluence, GitHub
+      </li>
+    </ul>
+
+    <hr />
+
+    <!-- Professional Experience -->
+    <h2>Professional Experience</h2>
+
+    <div class="job-block">
+      <div class="job-header">
+        <span>Recurved Digital Solutions</span>
+        <span>Colombo, Sri Lanka (Jul 2024 – Apr 2026)</span>
+      </div>
+      <div class="job-title">Full Stack Software Engineer</div>
+      <p>
+        Responsible for the full-lifecycle development and deployment of web applications and
+        automation workflows for diverse client brands within a rapid-delivery agency ecosystem.
+      </p>
+      <ul>
+        <li>
+          <strong>Multi-Framework Frontend Development:</strong>
+          Engineered responsive, component-driven client web applications using React.js / Next.js and
+          Vue.js / Nuxt.js, managing application state, optimizing rendering performance, and ensuring
+          fast load times and search engine visibility across production deployments.
+        </li>
+        <li>
+          <strong>Full-Stack Backend Development:</strong>
+          Built server-side applications and RESTful APIs using ASP.NET Core (C#) and Node.js
+          (Express, Koa), maintaining dedicated backend and database instances per client, integrating
+          Entity Framework Core for data access and Redis for caching.
+        </li>
+        <li>
+          <strong>Application Security &amp; Middleware:</strong>
+          Protected application endpoints by implementing custom middleware pipelines handling JWT
+          authentication, role-based authorization, and IP-based rate limiting across client environments.
+        </li>
+        <li>
+          <strong>Cloud &amp; Deployment:</strong>
+          Handled application deployments across AWS (EC2, S3, Route53, Lambda) and private VPS
+          environments, maintaining CI/CD workflows via GitHub Actions for consistent release cycles.
+        </li>
+        <li>
+          <strong>Workflow Automation:</strong>
+          Implemented n8n automation pipelines to streamline social media content distribution and
+          synchronize data structures across client environments.
+        </li>
+      </ul>
+    </div>
+
+    <div class="job-block">
+      <div class="job-header velou-header">
+        <span>Velou Inc.</span>
+        <span>Remote (Nov 2022 – Jul 2024)</span>
+      </div>
+      <div class="job-title">Software Engineer / Associate Software Engineer</div>
+      <p>
+        Engineered specialized internal tooling to support data analysis and product validation operations
+        for major consumer fashion and retail partner brands, working closely with product managers and
+        backend teams in an agile delivery cycle.
+      </p>
+      <ul>
+        <li>
+          <strong>Frontend Engineering:</strong>
+          Built dynamic, fully responsive user interfaces using React.js and Vue.js (Composition API)
+          to enable complex technical product attribute validation workflows, maintaining strong
+          UI/UX standards and cross-browser compatibility.
+        </li>
+        <li>
+          <strong>REST API Integration &amp; Backend Collaboration:</strong>
+          Integrated frontends with Koa.js REST API backends, handling high-throughput data interactions
+          across large, complex datasets and collaborating with engineers on API contract design and
+          performance optimization.
+        </li>
+      </ul>
+    </div>
+
+    <div class="job-block">
+      <div class="job-header mi-synergy-header">
+        <span>MI Synergy (Pvt) Ltd</span>
+        <span>Colombo, Sri Lanka (Dec 2021 – Nov 2022)</span>
+      </div>
+      <div class="job-title">Associate Software Engineer / Intern Software Engineer</div>
+      <ul>
+        <li>
+          <strong>Backend Engineering &amp; API Development:</strong>
+          Designed and implemented production-grade RESTful APIs using Spring Boot and Spring WebFlux,
+          applying clean architecture principles and writing testable server-side logic validated through
+          JUnit test suites.
+        </li>
+        <li>
+          <strong>Database Design &amp; Optimisation:</strong>
+          Formulated and optimized schema designs, querying routines, and indexing strategies inside
+          production MySQL instances to support high-throughput application workloads.
+        </li>
+        <li>
+          <strong>Agile Team Collaboration:</strong>
+          Participated in Scrum ceremonies, managed feature development across sprint cycles, and used Git
+          with structured branching models to ensure clean, conflict-free version control in a collaborative
+          team environment.
+        </li>
+      </ul>
+    </div>
+
+    <hr />
+
+    <!-- Projects -->
+    <h2>Projects</h2>
+
+    <div class="job-block">
+      <div class="job-header">
+        <span><strong>FlowForge</strong> — Distributed Visual Workflow Orchestrator &amp; State Machine Engine</span>
+        <span>Personal Project (2026)</span>
+      </div>
+      <div class="job-title">React &bull; TypeScript &bull; ASP.NET Core (.NET 8) &bull; MassTransit &bull; MS SQL Server &bull; RabbitMQ &bull; Docker</div>
+      <p>
+        A full-stack distributed system where users visually design multi-step business workflows on an
+        interactive drag-and-drop canvas; the .NET backend executes those workflows as concurrent,
+        fault-tolerant state machine instances across microservices.
+      </p>
+      <ul>
+        <li>
+          <strong>Visual Canvas (React Flow / XYFlow):</strong>
+          Built an interactive node-graph editor using React Flow and TypeScript, supporting custom
+          drag-and-drop node types (Trigger, Action, Decision, Delay) with a dynamic configuration
+          sidebar; nodes update color in real time (green/red/blue) as the backend executes each step
+          via SignalR WebSocket push.
+        </li>
+        <li>
+          <strong>State Machine Engine (MassTransit Saga):</strong>
+          Implemented the core orchestration engine as a MassTransit Saga state machine, modelling each
+          workflow instance through Pending, Running, Paused, Completed, and Failed states; saga state
+          is persisted to MS SQL Server via Entity Framework Core, surviving service restarts without
+          data loss.
+        </li>
+        <li>
+          <strong>Concurrent Step Execution (System.Threading.Channels):</strong>
+          Engineered a bounded producer/consumer pipeline using <code>System.Threading.Channels</code>
+          to execute workflow steps concurrently across CPU-scaled worker tasks, applying natural
+          backpressure to prevent memory exhaustion under load spikes.
+        </li>
+        <li>
+          <strong>Microservice Architecture (3 Services):</strong>
+          Decomposed the system into an API Gateway (JWT auth, SignalR hub, YARP reverse proxy),
+          a Definition Service (workflow CRUD with multi-tenant MS SQL persistence), and the
+          Orchestration Engine — communicating asynchronously over RabbitMQ.
+        </li>
+        <li>
+          <strong>Multi-Tenant RBAC &amp; Audit Log:</strong>
+          Enforced workspace-level tenant isolation using EF Core global query filters on the
+          <code>WorkspaceId</code> claim from the JWT; implemented role-based access (Admin / Editor /
+          Viewer) and an immutable audit log recording every state transition with actor, timestamp,
+          and payload snapshot.
+        </li>
+        <li>
+          <strong>Testing &amp; CI/CD:</strong>
+          Wrote NUnit tests targeting 100% coverage of state machine transition logic using MassTransit
+          in-memory test harness; integration tests via <code>WebApplicationFactory</code>; automated
+          GitHub Actions pipeline runs tests on every pull request and builds/pushes Docker images
+          on merge to main.
+        </li>
+      </ul>
+    </div>
+
+    <hr />
+
+    <!-- Education -->
+    <h2>Education</h2>
+    <ul>
+      <li>
+        <strong>B.Sc. (Hons) in Software Engineering</strong>
+        | Cardiff Metropolitan University (Completed 2023)
+      </li>
+      <li>
+        <strong>Graduate Diploma in Software Engineering</strong>
+        | Institute of Software Engineering (Completed 2022)
+      </li>
+      <li>
+        <strong>Introduction to ASP.NET Core Framework</strong>
+        | Microsoft / Coursera Professional Certificate — <em>In Progress (2026)</em><br />
+        <em>Topics: ASP.NET Core Architecture, RESTful API Design with Minimal APIs, Entity Framework Core,
+        Blazor Component Development, React + ASP.NET Core Integration, Bootstrap, State Management</em>
+      </li>
+    </ul>
+
+    <hr />
+
+    <!-- Professional References -->
+    <h2>Professional References</h2>
+    <ul>
+      <li>
+        <strong>Devapriya Sampath</strong>
+        | CEO, Queue Connect | +94 71 248 7853 |
+        <a href="mailto:desampath@gmail.com">desampath@gmail.com</a>
+      </li>
+      <li>
+        <strong>Madujith Chinthaka</strong>
+        | Senior Software Engineer | +94 71 994 8941 |
+        <a href="mailto:madujithc@gmail.com">madujithc@gmail.com</a>
+      </li>
+    </ul>
+
+    <script>
+      // Script to handle interactive/toggleable avatar behavior
+      const avatarContainer = document.getElementById('avatarContainer');
+      avatarContainer.addEventListener('click', () => {
+        avatarContainer.classList.toggle('hidden-avatar');
+      });
+    </script>
+  </body>
+</html>
