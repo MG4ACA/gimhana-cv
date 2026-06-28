@@ -1,6 +1,6 @@
 /* Page Margins (Reduced top/bottom margin) */
 @page {
-  /* margin: 0.8cm 1.5cm; */
+  margin: 0.6cm 1.5cm;
 }
 
 /* General typography settings to prevent justification and hyphen issues */
