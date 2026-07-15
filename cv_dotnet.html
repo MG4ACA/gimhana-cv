@@ -44,41 +44,6 @@
         margin-top: 0 !important;
       }
 
-      /* Toggleable Avatar styling */
-      .avatar-container {
-        position: relative;
-        cursor: pointer;
-        display: inline-block;
-        transition:
-          opacity 0.3s ease,
-          transform 0.3s ease;
-      }
-
-      .avatar-container:hover {
-        transform: scale(1.05);
-      }
-
-      .avatar-container.hidden-avatar img {
-        opacity: 0.15;
-        filter: grayscale(100%);
-      }
-
-      .avatar-container::after {
-        content: 'Click to toggle';
-        position: absolute;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 8px;
-        color: #888;
-        white-space: nowrap;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .avatar-container:hover::after {
-        opacity: 1;
-      }
 
       .job-block {
         margin-bottom: 15px;
@@ -141,17 +106,8 @@
     </style>
   </head>
   <body>
-    <!-- Header Section with Left Avatar and Right Info -->
+    <!-- Header Section with Info -->
     <div class="header-container">
-      <div class="header-left">
-        <div
-          class="avatar-container"
-          id="avatarContainer"
-          title="Click to toggle avatar visibility"
-        >
-          <img src="profile.jpg" alt="Gimhana Mithuranga" id="avatarImage" />
-        </div>
-      </div>
       <div class="header-right">
         <h1>GIMHANA MITHURANGA</h1>
         <h2 class="cv-title">Full Stack Software Engineer</h2>
@@ -172,11 +128,11 @@
     <h2>Professional Summary</h2>
     <p>
       Full Stack Software Engineer with 4 years of experience building and shipping high-performing web
-      applications across frontend and backend stacks. Strong hands-on background in React.js and Node.js
+      applications across frontend and backend stacks. Strong hands-on background in the Vue.js (Vue 3, Composition API) and Node.js
       ecosystems, with proven ability to collaborate closely with client engineering teams in agile
       environments and deliver reliable, production-ready software on time. Experienced in RESTful API
-      design, cloud deployments on AWS, and application security practices. Currently expanding into
-      the .NET ecosystem — actively completing the Microsoft ASP.NET Core Professional Certificate
+      design, cloud deployments on AWS, and application security practices. Secondary experience with React. Expanding into
+      the .NET ecosystem — having completed the Microsoft ASP.NET Core Professional Certificate
       (Coursera) to broaden backend capabilities alongside existing strengths.
     </p>
 
@@ -191,7 +147,7 @@
       </li>
       <li>
         <strong>Frameworks &amp; Platforms:</strong>
-        ASP.NET Core, React.js / Next.js, Vue.js (Composition &amp; Options API), Node.js (Express, Koa.js), Laravel, Spring Boot
+        Vue.js (Vue 3, Composition API, Nuxt.js), ASP.NET Core, React.js / Next.js, Node.js (Express, Koa.js), Laravel, Spring Boot
       </li>
       <li>
         <strong>Databases &amp; Caching:</strong>
@@ -228,9 +184,8 @@
       </p>
       <ul>
         <li>
-          <strong>Multi-Framework Frontend Development:</strong>
-          Engineered responsive, component-driven client applications using React.js / Next.js and Vue.js / Nuxt.js,
-          building shared reusable component libraries to ensure code consistency and long-term maintainability.
+          <strong>Vue-First Frontend Architecture:</strong>
+          Engineered responsive, component-driven client applications primarily using Vue 3 (Composition API), Nuxt.js, and Pinia for state management. Maintained secondary React/Next.js projects, building shared reusable component libraries to ensure code consistency and long-term maintainability.
         </li>
         <li>
           <strong>Full-Stack Backend &amp; Maintainability:</strong>
@@ -277,8 +232,8 @@
       </p>
       <ul>
         <li>
-          <strong>Frontend Engineering:</strong>
-          Built dynamic, fully responsive user interfaces using React.js and Vue.js (Composition API)
+          <strong>Frontend Engineering (Vue 3):</strong>
+          Built dynamic, fully responsive user interfaces using Vue.js (Composition API)
           to enable complex technical product attribute validation workflows, maintaining strong
           UI/UX standards and cross-browser compatibility.
         </li>
@@ -393,7 +348,7 @@
       </li>
       <li>
         <strong>Introduction to ASP.NET Core Framework</strong>
-        | Microsoft / Coursera Professional Certificate — <em>In Progress (2026)</em><br />
+        | Microsoft / Coursera Professional Certificate — <em>Completed (2026)</em><br />
         <em>Topics: ASP.NET Core Architecture, RESTful API Design with Minimal APIs, Entity Framework Core,
         Blazor Component Development, React + ASP.NET Core Integration, Bootstrap, State Management</em>
       </li>
@@ -416,12 +371,5 @@
       </li>
     </ul>
 
-    <script>
-      // Script to handle interactive/toggleable avatar behavior
-      const avatarContainer = document.getElementById('avatarContainer');
-      avatarContainer.addEventListener('click', () => {
-        avatarContainer.classList.toggle('hidden-avatar');
-      });
-    </script>
   </body>
 </html>
