@@ -1,0 +1,119 @@
+### FRT Store — Backend API Requests
+### Backend must be running: npm run start (port 3010)
+
+@baseUrl = http://localhost:3010
+
+###############################################
+# PRODUCTS
+###############################################
+
+### Get all products
+GET {{baseUrl}}/products
+
+###
+
+### Get single product — no options (out of stock)
+GET {{baseUrl}}/products/ed8b63ca-f811-4011-8084-8b7a12c4c332
+
+###
+
+### Get single product — has Color options (red, blue)
+GET {{baseUrl}}/products/5f99710d-c88a-4bdd-958b-285e75f720ad
+
+###
+
+###############################################
+# BRANDS
+###############################################
+
+### Get all brands
+GET {{baseUrl}}/brands
+
+###
+
+###############################################
+# CATEGORIES
+###############################################
+
+### Get all categories
+GET {{baseUrl}}/categories
+
+###
+
+###############################################
+# CHECKOUT
+###############################################
+
+### Checkout — product with no option
+POST {{baseUrl}}/checkout
+Content-Type: application/json
+
+{
+  "name": "Gimhana",
+  "surname": "Mithuranga",
+  "phone": "0771234567",
+  "email": "gimhana@example.com",
+  "zip_code": "10001",
+  "items": [
+    {
+      "productId": "ed8b63ca-f811-4011-8084-8b7a12c4c332",
+      "product_name": "Tresom",
+      "qty": 1,
+      "selectedOption": null,
+      "price": 193.04
+    }
+  ]
+}
+
+###
+
+### Checkout — product with Color option selected
+POST {{baseUrl}}/checkout
+Content-Type: application/json
+
+{
+  "name": "Gimhana",
+  "surname": "Mithuranga",
+  "phone": "0771234567",
+  "email": "gimhana@example.com",
+  "zip_code": "10001",
+  "items": [
+    {
+      "productId": "5f99710d-c88a-4bdd-958b-285e75f720ad",
+      "product_name": "Trippledex",
+      "qty": 2,
+      "selectedOption": "red",
+      "price": 468.69
+    }
+  ]
+}
+
+###
+
+### Checkout — mixed cart (2 items, one with option, one without)
+POST {{baseUrl}}/checkout
+Content-Type: application/json
+
+{
+  "name": "Gimhana",
+  "surname": "Mithuranga",
+  "phone": "0771234567",
+  "email": "gimhana@example.com",
+  "zip_code": "10001",
+  "items": [
+    {
+      "productId": "ed8b63ca-f811-4011-8084-8b7a12c4c332",
+      "product_name": "Tresom",
+      "qty": 1,
+      "selectedOption": null,
+      "price": 193.04
+    },
+    {
+      "productId": "5f99710d-c88a-4bdd-958b-285e75f720ad",
+      "product_name": "Trippledex",
+      "qty": 1,
+      "selectedOption": "blue",
+      "price": 468.69
+    }
+  ]
+}

@@ -6,6 +6,19 @@
 
 ---
 
+## 📋 Table of Contents
+- [Exercise 0 — How a Senior Front-End Dev Starts](#exercise-0--how-a-senior-front-end-dev-starts)
+- [Exercise 1 — Project Setup](#exercise-1--project-setup)
+- [Exercise 2 — Products Store](#exercise-2--products-store)
+- [Exercise 3 — PLPView + ProductGrid + ProductCard](#exercise-3--plpview--productgrid--productcard)
+- [Exercise 4 — useFilters Composable](#exercise-4--usefilters-composable)
+- [Exercise 5 — Cart Store + Cart Dropdown](#exercise-5--cart-store--cart-dropdown)
+- [Exercise 6 — PDPView (Product Detail Page)](#exercise-6--pdpview-product-detail-page)
+- [Exercise 7 — Stage II: Price Filter, Qty Management, Quick Add Modal](#exercise-7--stage-ii-price-filter-qty-management-quick-add-modal)
+- [Exercise 8 — Stage III: Checkout](#exercise-8--stage-iii-checkout)
+
+---
+
 ## Exercise 0 — How a Senior Front-End Dev Starts
 
 ### What we are building
@@ -190,7 +203,7 @@ export type ProductsResponse = Product[]
 
 ```ts
 // src/services/api.ts
-import type { BrandResponse, CategoriesResponse, Product, ProductsResponse } from "@/types"
+import type { BrandResponse, CategoriesResponse, CheckoutPayload, Product, ProductsResponse } from "@/types"
 
 const BASE_URL = "http://localhost:3010"
 
@@ -207,7 +220,7 @@ export const api = {
   getCategories: (): Promise<CategoriesResponse> =>
     fetch(`${BASE_URL}/categories`).then(r => r.json()),
 
-  checkout: (payload: unknown): Promise<Response> =>
+  checkout: (payload: CheckoutPayload): Promise<Response> =>
     fetch(`${BASE_URL}/checkout`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -439,7 +452,7 @@ export const useProductsStore = defineStore("products", () => {
 
   const fetchAll = async () => {
     isLoading.value = true
-    error.value = null
+    error.value = null // Always clear previous errors when starting a new request
     try {
       const [p, b, c] = await Promise.all([
         api.getProducts(),
@@ -450,7 +463,7 @@ export const useProductsStore = defineStore("products", () => {
       brands.value = b
       categories.value = c
     } catch (e: unknown) {
-      error.value = "Failed to load store data. Please try again."
+      error.value = e instanceof Error ? e.message : "Failed to load store data. Please try again."
       console.error(e)
     } finally {
       isLoading.value = false
@@ -739,10 +752,178 @@ export function useFilters(products: Ref<Product[]>) {
 }
 ```
 
+```vue
+<!-- src/components/plp/CategoryTabs.vue -->
+<script setup lang="ts">
+import type { Category } from "@/types"
+
+defineProps<{
+  categories: Category[]
+  modelValue: string
+}>()
+
+const emit = defineEmits<{
+  (e: "update:modelValue", value: string): void
+}>()
+</script>
+
+<template>
+  <div class="tabs">
+    <button
+      class="tabs__btn"
+      :class="{ 'tabs__btn--active': modelValue === 'all' }"
+      @click="emit('update:modelValue', 'all')"
+    >
+      All Products
+    </button>
+
+    <button
+      v-for="cat in categories"
+      :key="cat.id"
+      class="tabs__btn"
+      :class="{ 'tabs__btn--active': modelValue === cat.name }"
+      @click="emit('update:modelValue', cat.name)"
+    >
+      {{ cat.name }}
+    </button>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+@use "@/assets/styles/variables" as *;
+
+.tabs {
+  display: flex;
+  gap: $space-sm;
+  overflow-x: auto;
+  padding-bottom: $space-sm;
+
+  &__btn {
+    padding: $space-xs $space-md;
+    border: 1px solid $color-border;
+    border-radius: 20px;
+    font-size: $font-size-sm;
+    white-space: nowrap;
+
+    &--active {
+      background: $color-primary;
+      color: white;
+      border-color: $color-primary;
+    }
+  }
+}
+</style>
+```
+
+```vue
+<!-- src/components/plp/SortByFilter.vue -->
+<script setup lang="ts">
+defineProps<{
+  modelValue: string
+}>()
+
+const emit = defineEmits<{
+  (e: "update:modelValue", value: string): void
+}>()
+</script>
+
+<template>
+  <div class="sort">
+    <label class="sort__label">Sort by:</label>
+    <select
+      :value="modelValue"
+      class="sort__select"
+      @change="emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
+    >
+      <option value="date_desc">Newest First</option>
+      <option value="date_asc">Oldest First</option>
+      <option value="price_asc">Price: Low to High</option>
+    </select>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+@use "@/assets/styles/variables" as *;
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+
+  &__label { font-size: $font-size-sm; color: $color-muted; }
+  &__select {
+    padding: $space-xs $space-sm;
+    border: 1px solid $color-border;
+    border-radius: $border-radius;
+    font-size: $font-size-sm;
+  }
+}
+</style>
+```
+
+```vue
+<!-- src/components/plp/BrandFilter.vue -->
+<script setup lang="ts">
+import type { Brand } from "@/types"
+
+defineProps<{
+  brands: Brand[]
+  modelValue: string[]
+}>()
+
+const emit = defineEmits<{
+  (e: "update:modelValue", value: string[]): void
+}>()
+
+const toggleBrand = (brandName: string, currentSelected: string[]) => {
+  if (currentSelected.includes(brandName)) {
+    emit("update:modelValue", currentSelected.filter(b => b !== brandName))
+  } else {
+    emit("update:modelValue", [...currentSelected, brandName])
+  }
+}
+</script>
+
+<template>
+  <div class="brand-filter">
+    <span class="brand-filter__title">Brands:</span>
+    <div class="brand-filter__list">
+      <label v-for="b in brands" :key="b.id" class="brand-filter__item">
+        <input
+          type="checkbox"
+          :checked="modelValue.includes(b.name)"
+          @change="toggleBrand(b.name, modelValue)"
+        />
+        <span>{{ b.name }}</span>
+      </label>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+@use "@/assets/styles/variables" as *;
+
+.brand-filter {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+
+  &__title { font-size: $font-size-sm; color: $color-muted; }
+  &__list { display: flex; gap: $space-md; flex-wrap: wrap; }
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: $font-size-sm;
+    cursor: pointer;
+  }
+}
+</style>
+```
+
 Key things to notice:
-- [...products.value] copies the array — the original is never mutated
-- computed auto-recalculates whenever selectedCategory, selectedBrands, sortBy, or products changes
-- Date parsing: release_date is "M/D/YYYY" string — new Date() parses this correctly
+- `v-model` pattern in custom components uses `modelValue` prop and `update:modelValue` emit event
+- `CategoryTabs`, `BrandFilter`, and `SortByFilter` are pure presentation components that emit updates back to `PLPView`
 
 > 💾 **Git: Commit and merge when all 3 filters are wired and working in the browser**
 > ```bash
@@ -856,6 +1037,72 @@ export const useCartStore = defineStore("cart", () => {
 
   return { items, totalItems, totalPrice, addItem, removeItem, updateQty, clearCart }
 })
+```
+
+```vue
+<!-- src/components/layout/AppHeader.vue -->
+<script setup lang="ts">
+import { ref } from "vue"
+import { useCartStore } from "@/stores/cart"
+import CartDropdown from "@/components/cart/CartDropdown.vue"
+
+const cartStore = useCartStore()
+const isCartOpen = ref(false)
+
+const toggleCart = () => {
+  isCartOpen.value = !isCartOpen.value
+}
+</script>
+
+<template>
+  <header class="header">
+    <div class="header__container">
+      <RouterLink to="/" class="header__logo">FRT Store</RouterLink>
+      
+      <div class="header__cart">
+        <button class="header__cart-btn" @click="toggleCart">
+          Cart ({{ cartStore.totalItems }})
+        </button>
+        <CartDropdown :is-open="isCartOpen" />
+      </div>
+    </div>
+  </header>
+</template>
+
+<style lang="scss" scoped>
+@use "@/assets/styles/mixins" as *;
+@use "@/assets/styles/variables" as *;
+
+.header {
+  border-bottom: 1px solid $color-border;
+  background: $color-bg;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  &__container {
+    @include container;
+    @include flex-between;
+    height: 64px;
+  }
+
+  &__logo {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  &__cart {
+    position: relative;
+
+    &-btn {
+      font-weight: 500;
+      padding: $space-xs $space-sm;
+      border: 1px solid $color-border;
+      border-radius: $border-radius;
+    }
+  }
+}
+</style>
 ```
 
 > 💾 **Git: Commit and merge when cart add/remove works end to end**
